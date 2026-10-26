@@ -20,3 +20,6 @@
   c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg) translateY(-4px)';});
   c.addEventListener('mouseleave',function(){c.style.transform='';});
 })();
+/* Armar la bandera al verla */
+(function(){var f=document.querySelector('.cr-flag');if(!f)return;if(!('IntersectionObserver' in window)){f.classList.add('go');return;}
+new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){f.classList.add('go');o.disconnect();}});},{threshold:.6}).observe(f);})();

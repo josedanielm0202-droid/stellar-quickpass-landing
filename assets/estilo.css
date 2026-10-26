@@ -115,3 +115,16 @@ summary::after{content:"+";color:var(--azul);font-size:1.4rem;line-height:1}deta
 @keyframes i-barin{0%{transform:translateX(120px) scale(.3,1);opacity:0}55%{transform:translateX(-6px) scale(1.25,.8);opacity:1}100%{transform:none}}
 @keyframes i-pop{0%{transform:scale(1)}50%{transform:scale(1.14)}100%{transform:scale(1)}}
 @media (max-width:520px){.intro-logo{width:110px;height:110px}}
+/* Bandera de Costa Rica */
+.cr-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cr-flag{flex:none;border-radius:6px;box-shadow:0 4px 12px rgba(11,16,32,.18);overflow:visible;width:clamp(36px,4vw,48px);height:auto}
+.cr-flag .fs{transform-box:fill-box;transform-origin:50% 50%}
+@media (prefers-reduced-motion:no-preference){
+.cr-flag .fs{opacity:0;transform:translateX(-60px) scale(.4,1.6)}.cr-flag .fs:nth-of-type(even){transform:translateX(60px) scale(.4,1.6)}
+.cr-flag.go .fs{animation:fs-in .7s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:calc(var(--i) * .12s)}
+.cr-flag.go{animation:fs-pop .4s .95s cubic-bezier(.34,1.56,.64,1)}
+.cr-flag:hover .fs{animation:fs-wave .6s ease;animation-delay:calc(var(--i) * .05s);opacity:1;transform:none}
+}
+@keyframes fs-in{60%{opacity:1;transform:translateX(0) scale(1.15,.8)}100%{opacity:1;transform:none}}
+@keyframes fs-pop{50%{transform:scale(1.15) rotate(-4deg)}}
+@keyframes fs-wave{50%{transform:translateY(-2px) scaleX(1.05)}}
