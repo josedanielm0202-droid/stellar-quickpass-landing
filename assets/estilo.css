@@ -91,12 +91,12 @@ summary::after{content:"+";color:var(--azul);font-size:1.4rem;line-height:1}deta
 .tag:hover{animation:sqp-wiggle .45s ease}
 .steps .card:hover .n,.n:hover{animation:sqp-bounce .6s ease}
 .card.dash{transition:transform .2s ease-out}
-.nav img:hover,header img:hover{animation:sqp-spin .8s ease}
+.nav img:hover,header img:hover{animation:sqp-boing .6s cubic-bezier(.34,1.56,.64,1)}
 }
 @keyframes sqp-wiggle{0%,100%{rotate:0deg}25%{rotate:-2.5deg}50%{rotate:2.5deg}75%{rotate:-1deg}}
 @keyframes sqp-shake{0%,100%{translate:0}20%,60%{translate:-5px 0}40%,80%{translate:5px 0}}
 @keyframes sqp-bounce{0%,100%{translate:0 0}40%{translate:0 -8px}70%{translate:0 2px}}
-@keyframes sqp-spin{from{rotate:0deg}to{rotate:360deg}}
+@keyframes sqp-boing{0%,100%{transform:none}30%{transform:translateY(-5px) scale(1.08,.92)}55%{transform:translateY(1px) scale(.95,1.05)}75%{transform:translateY(-2px) scale(1.02,.98)}}
 /* Pantalla de bienvenida */
 #intro{position:fixed;inset:0;z-index:9999;background:#14C38E;display:grid;place-items:center;clip-path:circle(150% at 50% 50%);transition:clip-path .8s cubic-bezier(.77,0,.18,1)}
 .no-intro #intro{display:none}
