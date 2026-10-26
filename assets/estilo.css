@@ -76,3 +76,24 @@ summary::after{content:"+";color:var(--azul);font-size:1.4rem;line-height:1}deta
 @media (max-width:600px){body{font-size:16px}.grid4:not(.team){grid-template-columns:1fr}.grid3,.steps,.stats,.txs{grid-template-columns:1fr}.sec{padding:70px 0}.hero{padding:50px 0 60px}.contract{flex-direction:column;align-items:flex-start}.nav{padding:10px 16px}.nav .brand img{height:24px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .av{object-fit:cover}img.av{display:block;border:3px solid #fff;box-shadow:0 4px 14px rgba(11,16,32,.15)}
+/* Interacciones al pasar el mouse */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+.btn{transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 10px 24px rgba(31,63,217,.28)}
+.card.st,.card.pc,.card.mem,.calc,.tx,.card.reveal{transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
+.card.st:hover{animation:sqp-wiggle .5s ease;transform:translateY(-6px) rotate(-1deg);box-shadow:0 18px 40px rgba(11,16,32,.18)}
+.card.pc:hover,.calc:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,16,32,.16)}
+.card.pc.good:hover{box-shadow:0 18px 40px rgba(20,195,142,.35)}
+.card.mem:hover{transform:translateY(-6px)}
+.card.mem:hover .av{animation:sqp-bounce .6s ease}
+.tx:hover{transform:translateX(6px) scale(1.02)}
+.tx.blocked:hover{animation:sqp-shake .4s ease}
+.tag:hover{animation:sqp-wiggle .45s ease}
+.steps .card:hover .n,.n:hover{animation:sqp-bounce .6s ease}
+.dash-anim{transition:transform .2s ease-out;will-change:transform}
+.nav img:hover,header img:hover{animation:sqp-spin .8s ease}
+}
+@keyframes sqp-wiggle{0%,100%{rotate:0deg}25%{rotate:-2.5deg}50%{rotate:2.5deg}75%{rotate:-1deg}}
+@keyframes sqp-shake{0%,100%{translate:0}20%,60%{translate:-5px 0}40%,80%{translate:5px 0}}
+@keyframes sqp-bounce{0%,100%{translate:0 0}40%{translate:0 -8px}70%{translate:0 2px}}
+@keyframes sqp-spin{from{rotate:0deg}to{rotate:360deg}}
