@@ -75,3 +75,4 @@ summary::after{content:"+";color:var(--azul);font-size:1.4rem;line-height:1}deta
 @media (max-width:960px){.hero-grid,.grid2{grid-template-columns:1fr}.grid3,.steps,.stats{grid-template-columns:1fr 1fr}.grid4,.txs{grid-template-columns:1fr 1fr}.nav nav{display:none}.dash{transform:none}}
 @media (max-width:600px){body{font-size:16px}.grid4:not(.team){grid-template-columns:1fr}.grid3,.steps,.stats,.txs{grid-template-columns:1fr}.sec{padding:70px 0}.hero{padding:50px 0 60px}.contract{flex-direction:column;align-items:flex-start}.nav{padding:10px 16px}.nav .brand img{height:24px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.av{object-fit:cover}img.av{display:block;border:3px solid #fff;box-shadow:0 4px 14px rgba(11,16,32,.15)}
