@@ -16,7 +16,7 @@
 /* Inclinacion de la tarjeta principal siguiendo el mouse */
 (function(){
   if(!matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches)return;
-  var c=document.querySelector('.dash-anim');if(!c)return;
+  var c=document.querySelector('.card.dash');if(!c)return;
   c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg) translateY(-4px)';});
   c.addEventListener('mouseleave',function(){c.style.transform='';});
 })();

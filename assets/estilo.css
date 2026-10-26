@@ -90,7 +90,7 @@ summary::after{content:"+";color:var(--azul);font-size:1.4rem;line-height:1}deta
 .tx.blocked:hover{animation:sqp-shake .4s ease}
 .tag:hover{animation:sqp-wiggle .45s ease}
 .steps .card:hover .n,.n:hover{animation:sqp-bounce .6s ease}
-.dash-anim{transition:transform .2s ease-out;will-change:transform}
+.card.dash{transition:transform .2s ease-out}
 .nav img:hover,header img:hover{animation:sqp-spin .8s ease}
 }
 @keyframes sqp-wiggle{0%,100%{rotate:0deg}25%{rotate:-2.5deg}50%{rotate:2.5deg}75%{rotate:-1deg}}
