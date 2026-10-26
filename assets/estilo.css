@@ -97,3 +97,16 @@ summary::after{content:"+";color:var(--azul);font-size:1.4rem;line-height:1}deta
 @keyframes sqp-shake{0%,100%{translate:0}20%,60%{translate:-5px 0}40%,80%{translate:5px 0}}
 @keyframes sqp-bounce{0%,100%{translate:0 0}40%{translate:0 -8px}70%{translate:0 2px}}
 @keyframes sqp-spin{from{rotate:0deg}to{rotate:360deg}}
+/* Pantalla de bienvenida */
+#intro{position:fixed;inset:0;z-index:9999;background:#14C38E;display:grid;place-items:center;clip-path:circle(150% at 50% 50%);transition:clip-path .8s cubic-bezier(.77,0,.18,1)}
+.no-intro #intro{display:none}
+.intro-on body{overflow:hidden}
+.intro-open #intro{clip-path:circle(0% at 50% 50%)}
+.intro-in{display:flex;align-items:center;gap:18px;transition:transform .6s,opacity .5s}
+.intro-open .intro-in{transform:scale(1.25);opacity:0}
+.intro-logo{animation:sqp-pop .9s cubic-bezier(.34,1.56,.64,1) both;filter:drop-shadow(0 8px 18px rgba(11,16,32,.25))}
+.intro-word{color:#fff;font:700 clamp(1.6rem,4vw,2.8rem) "Space Grotesk",sans-serif;letter-spacing:-.02em;display:flex}
+.intro-word span{display:inline-block;opacity:0;animation:sqp-letter .5s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(.55s + var(--i)*.04s)}
+@keyframes sqp-pop{0%{transform:scale(0) rotate(-180deg);opacity:0}60%{transform:scale(1.15) rotate(10deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes sqp-letter{0%{opacity:0;transform:translateY(24px) scale(.6)}100%{opacity:1;transform:none}}
+@media (max-width:520px){.intro-in{flex-direction:column;gap:10px}}
