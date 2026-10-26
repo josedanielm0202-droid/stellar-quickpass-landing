@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stellar QuickPass · Your agent pays. You set the cap.</title>
+<meta name="description" content="Stellar QuickPass: tu agente de IA paga APIs con x402 y un contrato en Stellar testnet bloquea todo gasto por encima del tope que firmaste. Demo en testnet.">
+<link rel="icon" href="assets/StellarQuickPass-icono-color.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="banner" role="note"><span class="dot"></span> <span data-es="Prototipo para el Pura Vida Ideathon. Corre en Stellar testnet (dinero de prueba). Contrato no auditado." data-en="Prototype for the Pura Vida Ideathon. Runs on Stellar testnet (test money). Contract not audited.">Prototipo para el Pura Vida Ideathon. Corre en Stellar testnet (dinero de prueba). Contrato no auditado.</span></div>
+<header class="nav">
+  <a href="#top" class="brand"><img src="assets/StellarQuickPass-horizontal-una-linea-color.svg" alt="Stellar QuickPass" height="30"></a>
+  <nav aria-label="Principal">
+    <a href="#problema" data-es="Problema" data-en="Problem">Problema</a>
+    <a href="#como" data-es="Cómo funciona" data-en="How it works">Cómo funciona</a>
+    <a href="#prueba" data-es="Prueba en vivo" data-en="Live proof">Prueba en vivo</a>
+    <a href="#negocio" data-es="Negocio" data-en="Business">Negocio</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="navr">
+    <button class="lang" id="lang" aria-label="Cambiar idioma / Switch language">EN</button>
+    <a class="btn sm" href="https://stellar-quickpass.vercel.app/demo" data-es="Ver demo" data-en="Try demo">Ver demo</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Built on Stellar · x402 · Soroban</p>
+      <h1>Your agent pays.<br><span class="grad">You set the cap.</span></h1>
+      <p class="lead" data-es="Tu agente de IA paga APIs por uso. Tú firmas <b>una vez</b> el presupuesto del mes, y un contrato en Stellar <b>bloquea</b> cualquier pago que se pase del tope." data-en="Your AI agent pays APIs per call. You sign the monthly budget <b>once</b>, and a Stellar contract <b>blocks</b> any payment over the cap.">Tu agente de IA paga APIs por uso. Tú firmas <b>una vez</b> el presupuesto del mes, y un contrato en Stellar <b>bloquea</b> cualquier pago que se pase del tope.</p>
+      <div class="ctas">
+        <a class="btn" href="https://stellar-quickpass.vercel.app/demo" data-es="Probar la demo →" data-en="Try the demo →">Probar la demo →</a>
+        <a class="btn ghost" href="https://github.com/jxsu404/stellar-quickpass" data-es="Ver el código" data-en="View the code">Ver el código</a>
+      </div>
+      <ul class="chips">
+        <li data-es="Entrar con correo (Cavos)" data-en="Email login (Cavos)">Entrar con correo (Cavos)</li>
+        <li data-es="Presupuesto en USDC" data-en="USDC budget">Presupuesto en USDC</li>
+        <li data-es="Límite aplicado en cadena" data-en="Limit enforced on-chain">Límite aplicado en cadena</li>
+      </ul>
+    </div>
+    <!-- mock dashboard -->
+    <div class="card dash reveal" aria-label="Ejemplo de panel del dueño (ilustración)">
+      <div class="dash-h"><img src="assets/StellarQuickPass-icono-color.svg" alt="" width="28"><b data-es="Cuenta-presupuesto" data-en="Budget account">Cuenta-presupuesto</b><span class="tag green">testnet</span></div>
+      <p class="mono small muted">CBKMDFKW…XROEEE</p>
+      <div class="row"><span data-es="Tope del mes" data-en="Monthly cap">Tope del mes</span><b class="mono">0,05 USDC</b></div>
+      <div class="bar" role="img" aria-label="4 de 5 pagos usados, el quinto se bloquea">
+        <span class="seg s1"></span><span class="seg s2"></span><span class="seg s3"></span><span class="seg s4"></span><span class="seg s5"></span>
+      </div>
+      <div class="row small"><span class="muted" data-es="Máx. por llamada" data-en="Max per call">Máx. por llamada</span><b class="mono">0,02 USDC</b></div>
+      <ul class="log mono small">
+        <li><i class="ok"></i>/tipo-cambio · 0,01 ✓</li>
+        <li><i class="ok"></i>/tipo-cambio · 0,01 ✓</li>
+        <li><i class="ok"></i>/tipo-cambio · 0,01 ✓</li>
+        <li><i class="ok"></i>/tipo-cambio · 0,01 ✓</li>
+        <li class="no"><i></i>/tipo-cambio · TopeAlcanzado ✕</li>
+        <li class="no"><i></i>/caro · 1,00 · MontoPorLlamada ✕</li>
+      </ul>
+      <p class="tiny muted" data-es="Ilustración basada en la corrida Q10 real (docs/transacciones.md)." data-en="Illustration based on the real Q10 run (docs/transacciones.md).">Ilustración basada en la corrida Q10 real (docs/transacciones.md).</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section id="problema" class="sec">
+  <div class="wrap">
+    <p class="eyebrow">01 · <span data-es="El problema" data-en="The problem">El problema</span></p>
+    <h2 data-es="Los agentes ya pagan APIs. Nadie les pone límite." data-en="Agents already pay APIs. Nobody caps them.">Los agentes ya pagan APIs. Nadie les pone límite.</h2>
+    <p class="lead2" data-es="Con x402, las APIs cobran por llamada. Con el esquema <code>exact</code>, cada llamada necesita un pago firmado y una transacción nueva." data-en="With x402, APIs charge per call. With the <code>exact</code> scheme, every call needs a signed payment and a new transaction.">Con x402, las APIs cobran por llamada. Con el esquema <code>exact</code>, cada llamada necesita un pago firmado y una transacción nueva.</p>
+    <div class="grid3">
+      <article class="card pc">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="14" width="48" height="36" rx="8" fill="#F2A516"/><path d="M20 32h24M32 20v24" stroke="#0B1020" stroke-width="5" stroke-linecap="round"/></svg>
+        <h3 data-es="Opción A: firmar cada pago" data-en="Option A: sign every payment">Opción A: firmar cada pago</h3>
+        <p data-es="El dueño aprueba cada llamada a mano. El agente deja de ser autónomo." data-en="The owner approves every call by hand. The agent is no longer autonomous.">El dueño aprueba cada llamada a mano. El agente deja de ser autónomo.</p>
+      </article>
+      <article class="card pc">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="32" r="12" fill="none" stroke="#E0464E" stroke-width="6"/><path d="M34 32h22M48 32v10M56 32v8" stroke="#E0464E" stroke-width="6" stroke-linecap="round"/></svg>
+        <h3 data-es="Opción B: darle una llave con fondos" data-en="Option B: hand over a funded key">Opción B: darle una llave con fondos</h3>
+        <p data-es="El agente puede gastar todo. Un error o un bucle vacía la wallet." data-en="The agent can spend everything. A bug or a loop empties the wallet.">El agente puede gastar todo. Un error o un bucle vacía la wallet.</p>
+      </article>
+      <article class="card pc good">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="#1F3FD9" stroke-width="7"/><rect x="30" y="38" width="28" height="8" rx="4" fill="#14C38E"/></svg>
+        <h3 data-es="Stellar QuickPass: una firma al mes" data-en="Stellar QuickPass: one signature a month">Stellar QuickPass: una firma al mes</h3>
+        <p data-es="Tope en contrato. El agente paga solo, pero nunca más de lo que firmaste." data-en="Cap in a contract. The agent pays on its own, but never more than you signed.">Tope en contrato. El agente paga solo, pero nunca más de lo que firmaste.</p>
+      </article>
+    </div>
+    <p class="src" data-es="Fuentes: <a href='https://github.com/x402-foundation/x402/issues/946'>issue #946 de x402</a> · <a href='https://developers.stellar.org/docs/build/agentic-payments/x402/built-on-stellar'>docs de Stellar sobre x402</a>." data-en="Sources: <a href='https://github.com/x402-foundation/x402/issues/946'>x402 issue #946</a> · <a href='https://developers.stellar.org/docs/build/agentic-payments/x402/built-on-stellar'>Stellar x402 docs</a>.">Fuentes: <a href="https://github.com/x402-foundation/x402/issues/946">issue #946 de x402</a> · <a href="https://developers.stellar.org/docs/build/agentic-payments/x402/built-on-stellar">docs de Stellar sobre x402</a>.</p>
+    <div class="stats">
+      <div><b class="mono">195.026.077</b><span data-es="transacciones x402 al 25/10/2026" data-en="x402 transactions as of 10/25/2026">transacciones x402 al 25/10/2026</span><a href="https://agenteconomy.to/x402">agenteconomy.to</a></div>
+      <div><b class="mono">US$42.220.552</b><span data-es="liquidados con x402 a la misma fecha" data-en="settled via x402, same date">liquidados con x402 a la misma fecha</span><a href="https://agenteconomy.to/x402">agenteconomy.to</a></div>
+      <div><b class="mono">US$3–5 billones</b><span data-es="de comercio que los agentes podrían intermediar para 2030 (estimación)" data-en="(trillion) of commerce agents could mediate by 2030 (estimate)">de comercio que los agentes podrían intermediar para 2030 (estimación)</span><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-agentic-commerce-opportunity-how-ai-agents-are-ushering-in-a-new-era-for-consumers-and-merchants">McKinsey</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como" class="sec alt">
+  <div class="wrap">
+    <p class="eyebrow">02 · <span data-es="Cómo funciona" data-en="How it works">Cómo funciona</span></p>
+    <h2 data-es="Entrar. Firmar. Pagar. Bloquear." data-en="Log in. Sign. Pay. Block.">Entrar. Firmar. Pagar. Bloquear.</h2>
+    <ol class="steps">
+      <li class="card reveal"><span class="n">1</span><h3 data-es="Entras con tu correo" data-en="Log in with email">Entras con tu correo</h3><p data-es="Con Cavos. Sin frase semilla y sin instalar una wallet." data-en="With Cavos. No seed phrase, no wallet to install.">Con Cavos. Sin frase semilla y sin instalar una wallet.</p></li>
+      <li class="card reveal"><span class="n">2</span><h3 data-es="Se crea tu cuenta-presupuesto" data-en="Your budget account is created">Se crea tu cuenta-presupuesto</h3><p data-es="Una cuenta-contrato <code>C…</code> de Soroban, solo tuya." data-en="A Soroban contract account <code>C…</code>, only yours.">Una cuenta-contrato <code>C…</code> de Soroban, solo tuya.</p></li>
+      <li class="card reveal"><span class="n">3</span><h3 data-es="Firmas una vez: renovar" data-en="Sign once: renovar">Firmas una vez: <code>renovar</code></h3><p data-es="Tope del mes, máximo por llamada, fin del periodo y recarga en USDC." data-en="Monthly cap, per-call max, period end and USDC top-up.">Tope del mes, máximo por llamada, fin del periodo y recarga en USDC.</p></li>
+      <li class="card reveal"><span class="n">4</span><h3 data-es="El agente paga con x402" data-en="The agent pays via x402">El agente paga con x402</h3><p data-es="Su llave no tiene fondos. Ante un 402, el SDK arma el pago desde tu <code>C…</code>." data-en="Its key holds no funds. On a 402, the SDK builds the payment from your <code>C…</code>.">Su llave no tiene fondos. Ante un 402, el SDK arma el pago desde tu <code>C…</code>.</p></li>
+      <li class="card reveal"><span class="n">5</span><h3 data-es="El contrato decide" data-en="The contract decides">El contrato decide</h3><p data-es="Fuera del tope, del máximo, del periodo o en pausa: se bloquea en la simulación. No hay tx, no se mueve dinero." data-en="Over the cap, the max, the period or paused: blocked in simulation. No tx, no money moves.">Fuera del tope, del máximo, del periodo o en pausa: se bloquea en la simulación. No hay tx, no se mueve dinero.</p></li>
+      <li class="card reveal"><span class="n">6</span><h3 data-es="Tú tienes el control" data-en="You stay in control">Tú tienes el control</h3><p data-es="Pausar, rotar la llave del agente o retirar lo que sobra: una firma cada uno." data-en="Pause, rotate the agent key or withdraw leftovers: one signature each.">Pausar, rotar la llave del agente o retirar lo que sobra: una firma cada uno.</p></li>
+    </ol>
+
+    <figure class="card flow reveal">
+      <svg viewBox="0 0 1000 300" role="img" aria-labelledby="flowt">
+        <title id="flowt">Diagrama: agente pide API, recibe 402, paga desde la cuenta-presupuesto; el contrato aprueba o bloquea</title>
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0B1020"/></marker></defs>
+        <g font-family="Space Grotesk, sans-serif" font-weight="700" font-size="18" text-anchor="middle">
+          <rect x="20" y="100" width="170" height="90" rx="18" fill="#F2A516"/><text x="105" y="140" fill="#0B1020">Agente IA</text><text x="105" y="165" font-size="13" font-family="JetBrains Mono" font-weight="400" fill="#0B1020">llave sin fondos</text>
+          <rect x="290" y="20" width="190" height="80" rx="18" fill="#fff" stroke="#0B1020" stroke-width="2"/><text x="385" y="55" fill="#0B1020">API x402</text><text x="385" y="80" font-size="13" font-family="JetBrains Mono" font-weight="400" fill="#E0464E">HTTP 402 · pagar</text>
+          <rect x="280" y="190" width="215" height="90" rx="18" fill="#1F3FD9"/><text x="387" y="228" fill="#fff">Cuenta-presupuesto</text><text x="387" y="254" font-size="13" font-family="JetBrains Mono" font-weight="400" fill="#fff">C… · Soroban</text>
+          <rect x="565" y="190" width="225" height="90" rx="18" fill="#0B1020"/><text x="677" y="228" fill="#fff">__check_auth</text><text x="677" y="254" font-size="12" font-family="JetBrains Mono" font-weight="400" fill="#14C38E">tope · máx · fecha · pausa</text>
+          <rect x="830" y="120" width="150" height="70" rx="18" fill="#14C38E"/><text x="905" y="162" fill="#0B1020">✓ Paga</text>
+          <rect x="830" y="215" width="150" height="70" rx="18" fill="#E0464E"/><text x="905" y="257" fill="#fff">✕ Bloquea</text>
+        </g>
+        <g stroke="#0B1020" stroke-width="2.5" fill="none" marker-end="url(#ar)">
+          <path d="M190 125 C240 100 250 70 288 62"/><path d="M190 165 C240 190 250 230 288 235"/><path d="M495 235 L563 235"/><path d="M790 220 C805 190 800 160 828 155"/><path d="M790 250 L828 250"/><path class="dash-anim" d="M905 120 C905 30 600 30 482 55"/>
+        </g>
+        <g font-family="Inter, sans-serif" font-size="13" fill="#0B1020"><text x="210" y="80">1 · pide</text><text x="200" y="225">2 · firma</text><text x="500" y="225">3 · revisa</text><text x="700" y="40">4 · se liquida y responde</text></g>
+      </svg>
+      <figcaption data-es="El límite lo aplica la cadena, no el agente. Basado en docs/ARQUITECTURA.md." data-en="The limit is enforced by the chain, not the agent. Based on docs/ARQUITECTURA.md.">El límite lo aplica la cadena, no el agente. Basado en docs/ARQUITECTURA.md.</figcaption>
+    </figure>
+
+    <div class="guard card reveal">
+      <h3 data-es="Además, el SDK del agente se cuida solo" data-en="The agent SDK also guards itself">Además, el SDK del agente se cuida solo</h3>
+      <ul class="pills">
+        <li data-es="Lista obligatoria de hosts permitidos" data-en="Mandatory allow-list of hosts">Lista obligatoria de hosts permitidos</li>
+        <li data-es="Máx. 10 pagos por minuto (por defecto)" data-en="Max 10 payments per minute (default)">Máx. 10 pagos por minuto (por defecto)</li>
+        <li data-es="Firma válida 300 s como máximo" data-en="Signature valid 300 s max">Firma válida 300 s como máximo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRUEBA -->
+<section id="prueba" class="sec">
+  <div class="wrap">
+    <p class="eyebrow">03 · <span data-es="Prueba en vivo" data-en="Live proof">Prueba en vivo</span></p>
+    <h2 data-es="No te lo contamos: está en la cadena." data-en="Don't take our word: it's on-chain.">No te lo contamos: está en la cadena.</h2>
+    <p class="lead2" data-es="Corrida de punta a punta Q10 (26/10/2026, 12:39 a. m. hora CR): tope 0,05 USDC, máximo 0,02 por llamada." data-en="End-to-end run Q10 (10/26/2026, 12:39 a.m. CR time): cap 0.05 USDC, max 0.02 per call.">Corrida de punta a punta Q10 (26/10/2026, 12:39 a. m. hora CR): tope 0,05 USDC, máximo 0,02 por llamada.</p>
+    <div class="budget card reveal">
+      <div class="bt"><span class="mono">0,00</span><span class="mono">tope 0,05 USDC</span></div>
+      <div class="bigbar"><span style="--w:20%" class="f">1</span><span style="--w:20%" class="f">2</span><span style="--w:20%" class="f">3</span><span style="--w:20%" class="f">4</span><span style="--w:20%" class="x">5 ✕</span></div>
+      <p class="small" data-es="4 pagos de US$0,01 pasan (más 1 % de comisión cada uno). El 5.º choca con el tope: <code>TopeAlcanzado</code>. Una llamada de US$1 choca con el máximo: <code>MontoPorLlamada</code>. Con la cuenta en pausa: <code>Pausada</code>. Ninguno de los bloqueos generó tx." data-en="4 payments of US$0.01 pass (plus a 1% fee each). The 5th hits the cap: <code>TopeAlcanzado</code>. A US$1 call hits the max: <code>MontoPorLlamada</code>. With the account paused: <code>Pausada</code>. No blocked attempt produced a tx.">4 pagos de US$0,01 pasan (más 1 % de comisión cada uno). El 5.º choca con el tope: <code>TopeAlcanzado</code>. Una llamada de US$1 choca con el máximo: <code>MontoPorLlamada</code>. Con la cuenta en pausa: <code>Pausada</code>. Ninguno de los bloqueos generó tx.</p>
+    </div>
+    <div class="txs">
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/331c01f02702acd7e94530fe6b92dc50eba1cb012b2e14d679a1be6b66cabe94"><span class="tag blue">renovar</span><span class="mono">331c01f0…</span><small data-es="tope 0,05 · máx 0,02" data-en="cap 0.05 · max 0.02">tope 0,05 · máx 0,02</small></a>
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/aa26ecdd60d84a052974132f4b630df26f6474740a3d50cf30ea891992203d26"><span class="tag green">pago 1/5</span><span class="mono">aa26ecdd…</span><small>US$0,01</small></a>
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/8929c0b8a39ffe5e572dac0efbba411ab0fceb188b2697c3e15188b0fca05770"><span class="tag green">pago 2/5</span><span class="mono">8929c0b8…</span><small>US$0,01</small></a>
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/af058a6a8138662f480b41280988cd8f49a3e2fe86b06b807369e7d2a7aa12fe"><span class="tag green">pago 3/5</span><span class="mono">af058a6a…</span><small>US$0,01</small></a>
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/3213715f1bde951afe6f9c59d56c59552c18f081922072fa6fdf55b057f9370d"><span class="tag green">pago 4/5</span><span class="mono">3213715f…</span><small>US$0,01</small></a>
+      <div class="tx blocked"><span class="tag red">pago 5/5</span><span class="mono">sin tx</span><small>TopeAlcanzado</small></div>
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/2497dec9905e57b4c3267b05ee4e4cccae6a77ee8113837b1e6e7e1fd138945a"><span class="tag amber">comisión</span><span class="mono">2497dec9…</span><small data-es="4000 unidades a la tesorería" data-en="4000 units to treasury">4000 unidades a la tesorería</small></a>
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/2e8b7da3dafdc273fbdff6b6b4b244930949e35f2c86aaeeaa01f284e3fd8e10"><span class="tag ink">pausar</span><span class="mono">2e8b7da3…</span><small data-es="después: pago bloqueado" data-en="then: payment blocked">después: pago bloqueado</small></a>
+      <a class="tx" href="https://stellar.expert/explorer/testnet/tx/ab4e837d3e37301d2a1d854af08b9a34d71a6a872a61bb59141441447f5e6c39"><span class="tag blue">retirar</span><span class="mono">ab4e837d…</span><small data-es="1,0096 USDC al dueño" data-en="1.0096 USDC to owner">1,0096 USDC al dueño</small></a>
+    </div>
+    <div class="contract card">
+      <div><p class="eyebrow" data-es="Contrato vigente · testnet" data-en="Current contract · testnet">Contrato vigente · testnet</p><p class="mono brk">CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE</p><p class="small muted" data-es="Desplegado el 26/10/2026, 5:18 a. m. hora CR · comisión 100 bps · fuente: deployments/testnet.json" data-en="Deployed 10/26/2026, 5:18 a.m. CR time · fee 100 bps · source: deployments/testnet.json">Desplegado el 26/10/2026, 5:18 a. m. hora CR · comisión 100 bps · fuente: deployments/testnet.json</p></div>
+      <a class="btn" href="https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE" data-es="Ver en Stellar Expert ↗" data-en="View on Stellar Expert ↗">Ver en Stellar Expert ↗</a>
+    </div>
+    <p class="src" data-es="La corrida Q10 usó un deploy anterior de prueba (CBAVYNKB…). Todas las filas en docs/transacciones.md. Cuentas de testnet sin valor real." data-en="The Q10 run used an earlier test deploy (CBAVYNKB…). All rows in docs/transacciones.md. Testnet accounts with no real value.">La corrida Q10 usó un deploy anterior de prueba (<a href="https://stellar.expert/explorer/testnet/contract/CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG">CBAVYNKB…</a>). Todas las filas en docs/transacciones.md. Cuentas de testnet sin valor real.</p>
+  </div>
+</section>
+
+<!-- NEGOCIO -->
+<section id="negocio" class="sec dark">
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow">04 · <span data-es="Modelo de negocio" data-en="Business model">Modelo de negocio</span></p>
+      <h2 data-es="1 % de lo que gasta el agente. Nada más." data-en="1% of what the agent spends. That's it.">1 % de lo que gasta el agente. Nada más.</h2>
+      <ul class="ticks">
+        <li data-es="<b>Cliente:</b> quien tiene agentes (dev o equipo) y quiere que paguen APIs x402 sin darles una wallet con fondos." data-en="<b>Customer:</b> anyone running agents (dev or team) who wants them to pay x402 APIs without a funded wallet."><b>Cliente:</b> quien tiene agentes (dev o equipo) y quiere que paguen APIs x402 sin darles una wallet con fondos.</li>
+        <li data-es="<b>Sin mensualidad</b> ni costo de entrada. La comisión se acumula en el contrato y va incluida en el tope." data-en="<b>No subscription</b> or setup fee. The fee accrues in the contract and counts toward the cap."><b>Sin mensualidad</b> ni costo de entrada. La comisión se acumula en el contrato y va incluida en el tope.</li>
+        <li data-es="<b>Ya implementado:</b> <code>cobrar_comision()</code> la manda a una tesorería fija." data-en="<b>Already built:</b> <code>cobrar_comision()</code> sends it to a fixed treasury."><b>Ya implementado:</b> <code>cobrar_comision()</code> la manda a una tesorería fija (<a href="https://stellar.expert/explorer/testnet/tx/820db07e4b543a68ed5297398ae51009113aeadbfc1e75ac34d0be2ee919dc18">820db07e…</a>).</li>
+        <li data-es="<b>Riesgo honesto:</b> en un pago de US$0,01 la comisión es 0,0001 USDC, y en x402 normalmente paga el vendedor: cobrarle al comprador hay que validarlo." data-en="<b>Honest risk:</b> on a US$0.01 payment the fee is 0.0001 USDC, and in x402 the seller usually pays: charging the buyer must be validated."><b>Riesgo honesto:</b> en un pago de US$0,01 la comisión es 0,0001 USDC, y en x402 normalmente paga el vendedor: cobrarle al comprador hay que validarlo.</li>
+      </ul>
+    </div>
+    <div class="calc card">
+      <p class="eyebrow">Ejemplo / Example</p>
+      <div class="cl"><span data-es="Pago del agente" data-en="Agent payment">Pago del agente</span><b class="mono">0,01 USDC</b></div>
+      <div class="cl"><span data-es="Comisión 1 %" data-en="1% fee">Comisión 1 %</span><b class="mono amber">0,0001 USDC</b></div>
+      <div class="cl"><span data-es="Fee de red medido" data-en="Measured network fee">Fee de red medido</span><b class="mono">≈ 11.800 stroops</b></div>
+      <p class="tiny" data-es="Fee medido en testnet en un pago desde la C… (README, docs/COSTOS.md). No damos precio XLM/USD por decisión del equipo." data-en="Fee measured on testnet for a payment from the C… (README, docs/COSTOS.md). No XLM/USD price is given, by team decision.">Fee medido en testnet en un pago desde la C… (<a href="https://stellar.expert/explorer/testnet/tx/dd9771057ccaf0448cb60b5e0c5325bc1124184aca2efa2a827fe355a364824c">dd977105…</a>, docs/COSTOS.md). No damos precio XLM/USD por decisión del equipo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="sec alt">
+  <div class="wrap">
+    <p class="eyebrow">05 · <span data-es="Tecnología" data-en="Tech stack">Tecnología</span></p>
+    <h2 data-es="Por qué Stellar, y con qué está hecho" data-en="Why Stellar, and what it's built with">Por qué Stellar, y con qué está hecho</h2>
+    <div class="grid4">
+      <div class="card st"><b>Soroban · Rust</b><span data-es="Cuenta-contrato con <code>__check_auth</code> propio (soroban-sdk 22)." data-en="Contract account with its own <code>__check_auth</code> (soroban-sdk 22).">Cuenta-contrato con <code>__check_auth</code> propio (soroban-sdk 22).</span></div>
+      <div class="card st"><b>x402 exact</b><span data-es="@x402/core + @x402/stellar, facilitador público en Stellar." data-en="@x402/core + @x402/stellar, public facilitator on Stellar.">@x402/core + @x402/stellar, facilitador público en Stellar.</span></div>
+      <div class="card st"><b>Cavos</b><span data-es="Login con correo (@cavos/kit), sin frase semilla." data-en="Email login (@cavos/kit), no seed phrase.">Login con correo (@cavos/kit), sin frase semilla.</span></div>
+      <div class="card st"><b>USDC</b><span data-es="USDC de Circle en testnet (SAC CBIELTK6…)." data-en="Circle USDC on testnet (SAC CBIELTK6…).">USDC de Circle en testnet (SAC CBIELTK6…).</span></div>
+      <div class="card st"><b>Next.js · Vercel</b><span data-es="Web del dueño: landing, /demo y /presupuesto." data-en="Owner web: landing, /demo and /presupuesto.">Web del dueño: landing, /demo y /presupuesto.</span></div>
+      <div class="card st"><b>Node · Render</b><span data-es="Vendedor demo x402 (node:http)." data-en="x402 demo seller (node:http).">Vendedor demo x402 (node:http).</span></div>
+      <div class="card st"><b>@stellar/stellar-sdk</b><span data-es="SDK del agente sobre RPC Soroban." data-en="Agent SDK over Soroban RPC.">SDK del agente sobre RPC Soroban.</span></div>
+      <div class="card st"><b>pnpm · Cargo</b><span data-es="Monorepo: web, api-demo, agent-client y contrato." data-en="Monorepo: web, api-demo, agent-client and contract.">Monorepo: web, api-demo, agent-client y contrato.</span></div>
+    </div>
+    <p class="src" data-es="Fuente: docs/STACK.md y README. Trabajo previo reconocido: AgentAllowance y ACAN (MIT), ejemplo account de soroban-examples." data-en="Source: docs/STACK.md and README. Prior work credited: AgentAllowance and ACAN (MIT), soroban-examples account.">Fuente: docs/STACK.md y README. Trabajo previo reconocido: <a href="https://github.com/karagozemin/AgentAllowance">AgentAllowance</a> y <a href="https://github.com/phoenix-2203/acan">ACAN</a> (MIT), ejemplo <code>account</code> de <a href="https://github.com/stellar/soroban-examples">soroban-examples</a>.</p>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo" class="sec">
+  <div class="wrap">
+    <p class="eyebrow">06 · <span data-es="Equipo" data-en="Team">Equipo</span></p>
+    <h2 data-es="Hecho en Costa Rica" data-en="Made in Costa Rica">Hecho en Costa Rica</h2>
+    <div class="grid4 team">
+      <a class="card mem" href="https://github.com/jxsu404"><span class="av" style="background:#1F3FD9">JV</span><b>Josué Valles</b><small>@jxsu404</small></a>
+      <a class="card mem" href="https://github.com/josedanielm0202-droid"><span class="av" style="background:#14C38E">J</span><b>Jose Matarrita</b><small>@josedanielm0202-droid</small></a>
+      <a class="card mem" href="https://github.com/Milasur"><span class="av" style="background:#F2A516">RA</span><b>Raúl Altamirano</b><small>@Milasur</small></a>
+      <a class="card mem" href="https://github.com/julissb51-cell"><span class="av" style="background:#E0464E">J</span><b>Juliana Sanabria</b><small>@julissb51-cell</small></a>
+    </div>
+    <p class="src" data-es="Según los commits del repo (README)." data-en="Per the repo commits (README).">Según los commits del repo (README).</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec alt">
+  <div class="wrap narrow">
+    <p class="eyebrow">07 · FAQ</p>
+    <h2 data-es="Preguntas frecuentes" data-en="Common questions">Preguntas frecuentes</h2>
+    <details><summary data-es="¿Es una inversión o un ahorro?" data-en="Is it an investment or savings?">¿Es una inversión o un ahorro?</summary><p data-es="No. Es una herramienta para controlar los gastos de un agente. No promete ganancias, no capta dinero del público y no es “sin riesgo”. Antes de usar dinero real en Costa Rica hay que revisar con un abogado la Ley 10.961 y la normativa de SUGEF." data-en="No. It's a tool to control an agent's spending. It promises no returns, takes no public deposits and is not “risk-free”. Before real money in Costa Rica, Law 10.961 and SUGEF rules must be reviewed with a lawyer.">No. Es una herramienta para controlar los gastos de un agente. No promete ganancias, no capta dinero del público y no es “sin riesgo”. Antes de usar dinero real en Costa Rica hay que revisar con un abogado la Ley 10.961 y la normativa de SUGEF.</p></details>
+    <details><summary data-es="¿Dónde queda el dinero?" data-en="Where is the money kept?">¿Dónde queda el dinero?</summary><p data-es="El presupuesto en USDC queda en el contrato de Stellar, no en una cuenta nuestra. Solo el dueño puede pausarlo, cambiar el tope o retirar lo que sobra." data-en="The USDC budget sits in the Stellar contract, not in an account of ours. Only the owner can pause it, change the cap or withdraw leftovers.">El presupuesto en USDC queda en el contrato de Stellar, no en una cuenta nuestra. Solo el dueño puede pausarlo, cambiar el tope o retirar lo que sobra.</p></details>
+    <details><summary data-es="¿Ya se puede usar con dinero real?" data-en="Can I use it with real money?">¿Ya se puede usar con dinero real?</summary><p data-es="No. Es un prototipo que corre en Stellar testnet (dinero de prueba) y el contrato no está auditado." data-en="No. It's a prototype on Stellar testnet (test money) and the contract is not audited.">No. Es un prototipo que corre en Stellar testnet (dinero de prueba) y el contrato no está auditado.</p></details>
+    <details><summary data-es="¿Qué pasa si el agente intenta gastar de más?" data-en="What if the agent overspends?">¿Qué pasa si el agente intenta gastar de más?</summary><p data-es="El contrato rechaza el pago en la simulación: no se crea transacción y no se mueve dinero. Lo probamos en testnet (TopeAlcanzado, MontoPorLlamada, Pausada)." data-en="The contract rejects it in simulation: no transaction, no money moves. Tested on testnet (TopeAlcanzado, MontoPorLlamada, Pausada).">El contrato rechaza el pago en la simulación: no se crea transacción y no se mueve dinero. Lo probamos en testnet (TopeAlcanzado, MontoPorLlamada, Pausada).</p></details>
+    <details><summary data-es="¿Necesito una wallet?" data-en="Do I need a wallet?">¿Necesito una wallet?</summary><p data-es="No. Entras con tu correo usando Cavos, sin frase semilla. El agente usa una llave sin fondos." data-en="No. You log in with email via Cavos, no seed phrase. The agent uses an unfunded key.">No. Entras con tu correo usando Cavos, sin frase semilla. El agente usa una llave sin fondos.</p></details>
+    <details><summary data-es="¿Es un producto oficial de Stellar?" data-en="Is it an official Stellar product?">¿Es un producto oficial de Stellar?</summary><p data-es="No. Es un proyecto independiente, Built on Stellar, hecho para el Pura Vida Ideathon." data-en="No. It's an independent project, Built on Stellar, made for the Pura Vida Ideathon.">No. Es un proyecto independiente, Built on Stellar, hecho para el Pura Vida Ideathon.</p></details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <img src="assets/StellarQuickPass-icono-negativo.svg" alt="" width="72">
+    <h2>Your agent pays. You set the cap.</h2>
+    <p data-es="Mira la demo en testnet o revisa cada línea del código." data-en="See the testnet demo or review every line of code.">Mira la demo en testnet o revisa cada línea del código.</p>
+    <div class="ctas center">
+      <a class="btn light" href="https://stellar-quickpass.vercel.app/demo" data-es="Abrir la demo →" data-en="Open the demo →">Abrir la demo →</a>
+      <a class="btn ghost light2" href="https://github.com/jxsu404/stellar-quickpass">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap fgrid">
+    <img src="assets/StellarQuickPass-horizontal-una-linea-negativo.svg" alt="Stellar QuickPass" height="26">
+    <p class="small" data-es="Built on Stellar. Proyecto independiente, no afiliado a la Stellar Development Foundation. Demo en testnet; contrato no auditado. No es inversión ni ahorro." data-en="Built on Stellar. Independent project, not affiliated with the Stellar Development Foundation. Testnet demo; contract not audited. Not an investment or savings.">Built on Stellar. Proyecto independiente, no afiliado a la Stellar Development Foundation. Demo en testnet; contrato no auditado. No es inversión ni ahorro.</p>
+    <p class="small"><a href="https://x.com/QuickpassStl">@QuickpassStl</a> · <a href="https://github.com/jxsu404/stellar-quickpass">GitHub</a></p>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
